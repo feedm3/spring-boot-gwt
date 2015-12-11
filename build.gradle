@@ -51,7 +51,6 @@ dependencies {
             'org.spockframework:spock-spring:1.0-groovy-2.4'
 }
 
-
 eclipse {
     classpath {
         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
