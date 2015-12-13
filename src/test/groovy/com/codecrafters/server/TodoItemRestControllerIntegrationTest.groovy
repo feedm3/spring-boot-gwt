@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.web.client.RestTemplate
-import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
@@ -19,7 +18,6 @@ import spock.lang.Stepwise
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
 @WebIntegrationTest
 @Stepwise
-@Ignore
 class TodoItemRestControllerIntegrationTest extends Specification {
 
     @Shared

@@ -39,8 +39,6 @@ sourceSets {
     test.runtimeClasspath += configurations.provided
 }
 
-
-
 dependencies {
     provided 'com.google.gwt:gwt-user:2.8.0-beta1',
             'com.google.gwt:gwt-dev:2.8.0-beta1',
@@ -57,7 +55,6 @@ dependencies {
             'org.spockframework:spock-core:1.0-groovy-2.4',
             'org.spockframework:spock-spring:1.0-groovy-2.4'
 }
-
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'

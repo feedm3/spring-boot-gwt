@@ -10,7 +10,6 @@ import spock.lang.Specification
  */
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
 @IntegrationTest
-@Ignore
 class TodoItemRepositoryIntegrationTest extends Specification {
 
     @Autowired
