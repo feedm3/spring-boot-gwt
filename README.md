@@ -40,6 +40,17 @@ To deploy this app to heroku use the __Deploy to Heroku__ Button on the top.
 Heroku uses the gradle `stage` task to build the project. Because Spring Boot puts everything we
 need into the jar file we only have to tell heroku to execute this jar file.
 
+## Technical Details
+
+### Architecture
+
+[![Architecture](docs/architecture.jpg)]
+
+The client side and server side are strictly separated. The GWT files are in the `client` package
+(except the `.gwt.xml`) and the server side code is in the `server` package.
+
+The communication is made via JSON for which reason we have make 2 implementations of the object we send.
+
 ### Dependencies
 
 Spring Boot uses the classpath to determine which servlet container to use. Since GWT has Jetty
