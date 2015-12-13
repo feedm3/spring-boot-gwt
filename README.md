@@ -1,6 +1,7 @@
 # Spring Boot GWT
 
 [![Build Status](https://travis-ci.org/feedm3/spring-boot-gwt.svg)](https://travis-ci.org/feedm3/spring-boot-gwt)
+[![GitHub license](https://img.shields.io/github/license/feedm3/spring-boot-gwt.svg)](http://choosealicense.com/licenses/mit/)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
