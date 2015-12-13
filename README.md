@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/feedm3/spring-boot-gwt.svg)](https://travis-ci.org/feedm3/spring-boot-gwt)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
+
 ## Run
 
 To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ the run configurations
