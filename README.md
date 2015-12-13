@@ -5,6 +5,9 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
+This is a demo project to demonstrate Spring Boot in conjunction with GWT. It uses the latest
+dependencies (Spring Boot 1.3 and GWT 2.8 beta) and Java 8.
+
 ## Run
 
 To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ the run configurations
@@ -31,6 +34,8 @@ gradlew build
 The build tasks compiles all GWT related stuff and puts it into the `static` folder.
 
 ### Heroku
+
+To deploy this app to heroku use the __Deploy to Heroku__ Button on the top.
 
 Heroku uses the gradle `stage` task to build the project. Because Spring Boot puts everything we
 need into the jar file we only have to tell heroku to execute this jar file.
