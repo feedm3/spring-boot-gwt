@@ -44,7 +44,7 @@ need into the jar file we only have to tell heroku to execute this jar file.
 
 ### Architecture
 
-[![Architecture](docs/architecture.jpg)]
+![Architecture](docs/architecture.jpg)
 
 The client side and server side are strictly separated. The GWT files are in the `client` package
 (except the `.gwt.xml`) and the server side code is in the `server` package.
