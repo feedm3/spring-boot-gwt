@@ -109,8 +109,9 @@ jar {
 
 // gets executed by heroku
 task stage {
-    dependsOn build
+    dependsOn clean, build
 }
+stage.mustRunAfter(clean)
 
 idea {
     module {
