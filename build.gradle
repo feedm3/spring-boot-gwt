@@ -109,7 +109,7 @@ jar {
 
 // gets executed by heroku
 task stage {
-    dependsOn clean, build
+    dependsOn clean, assemble
 }
 stage.mustRunAfter(clean)
 
