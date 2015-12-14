@@ -13,6 +13,12 @@ dependencies (Spring Boot 1.3 and GWT 2.8 beta) and Java 8.
 To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ the run configurations
 to do this are already present in this repo.
 
+Spring Boot can also be started with gradle.
+
+```
+gradlew bootRun
+```
+
 ## Test
 
 Only the server side code is currently tested. To run the tests use the following command
@@ -25,13 +31,21 @@ We use [Spock](https://github.com/spockframework/spock) as testing framework bec
 readability, syntax and build in features.
 
 ## Build
+
 The project gets build to a single jar file with an embedded tomcat.
 
 ```
 gradlew build
 ```
 
-The build tasks compiles all GWT related stuff and puts it into the `static` folder.
+After gradle build the project the finished jar file is in `build/libs/spring-boot-gwt-0.0.1-SNAPSHOT.jar`
+and can simply be started with
+
+```
+java -jar spring-boot-gwt-0.0.1-SNAPSHOT.jar
+```
+
+The build tasks compiles all GWT related stuff and puts it into the [`static`](src/main/resources/static) folder.
 
 ### Heroku
 
@@ -47,15 +61,17 @@ need into the jar file we only have to tell heroku to execute this jar file.
 ![Architecture](docs/architecture.jpg)
 
 The client side and server side are strictly separated. The GWT files are in the `client` package
-(except the `.gwt.xml`) and the server side code is in the `server` package.
+(except the `.gwt.xml`) and the server side code is in the `server` package. All static client code
+like the `index.html` and css files are inside the [`static`](src/main/resources/static) folder. Gradle
+will also put the compiled sources in this folder.
 
 The communication is made via JSON for which reason we have make 2 implementations of the object we send.
 
 ### Dependencies
 
-Spring Boot uses the classpath to determine which servlet container to use. Since GWT has Jetty
-in the classpath we have to put all GWT dependencies as provided. This is normally only possible
-with the `war` task so we had to make our own `provided` task. The instructions for this can be
-found on [Stackoverflow](http://stackoverflow.com/a/20841280/3141881).
+Spring Boot uses the classpath to determine which servlet container to use (tomcat comes with the Spring
+Boot dependencies). Since GWT also has Jetty within the classpath we have to put all GWT dependencies
+as provided. This is normally only possible with the `war` task so we had to make our own `provided` task.
+The instructions for this can be found on [Stackoverflow](http://stackoverflow.com/a/20841280/3141881).
 
 If you add any dependencies for GWT add them to the provided dependencies.
