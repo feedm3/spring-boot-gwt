@@ -27,7 +27,7 @@ public class TodoItemRestController {
         return repository.findByTextContainingIgnoreCase(Optional.ofNullable(containingText).orElse(""));
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<String> addTodoItem(@RequestBody final TodoItem item) {
         repository.save(item);
         return new ResponseEntity<>(HttpStatus.CREATED);

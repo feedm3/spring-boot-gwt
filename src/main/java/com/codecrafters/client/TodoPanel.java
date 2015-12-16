@@ -9,6 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
@@ -30,6 +31,12 @@ public class TodoPanel extends Composite {
     @UiField
     UListElement todoList;
 
+    @UiField
+    TextBox todoItemTextBox;
+
+    @UiField
+    Button addTodoItemButton;
+
     public TodoPanel() {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
@@ -43,6 +50,7 @@ public class TodoPanel extends Composite {
 
                 @Override
                 public void onSuccess(final Method method, final List<TodoItem> response) {
+                    todoList.removeAllChildren();
                     for (final TodoItem todoItem : response) {
                         final LIElement todoListItem = Document.get().createLIElement();
                         todoListItem.setInnerHTML(todoItem.getText());
@@ -50,6 +58,25 @@ public class TodoPanel extends Composite {
                     }
                 }
             });
+        });
+
+        addTodoItemButton.addClickHandler(event -> {
+            final String todoItemText = todoItemTextBox.getText();
+            if (!todoItemText.isEmpty()) {
+                final TodoItem todoItem = new TodoItem();
+                todoItem.setText(todoItemText);
+                todoItemService.addTodo(todoItem, new MethodCallback<Void>() {
+                    @Override
+                    public void onFailure(final Method method, final Throwable exception) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(final Method method, final Void response) {
+                        todoItemTextBox.setText("");
+                    }
+                });
+            }
         });
     }
 }
