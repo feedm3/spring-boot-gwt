@@ -30,6 +30,12 @@ public class TodoItemRestController {
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<String> addTodoItem(@RequestBody final TodoItem item) {
         repository.save(item);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeTodoItem(@RequestBody final TodoItem item) {
+        repository.delete(item);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
