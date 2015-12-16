@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.LIElement;
 import com.google.gwt.dom.client.UListElement;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
@@ -29,7 +30,7 @@ public class TodoPanel extends Composite {
     Button showTodoItemsButton;
 
     @UiField
-    UListElement todoList;
+    UListElement todoItemsList;
 
     @UiField
     TextBox todoItemTextBox;
@@ -42,40 +43,58 @@ public class TodoPanel extends Composite {
         initWidget(rootElement);
 
         showTodoItemsButton.addClickHandler(event -> {
-            todoItemService.getTodos("", new MethodCallback<List<TodoItem>>() {
-                @Override
-                public void onFailure(final Method method, final Throwable exception) {
-
-                }
-
-                @Override
-                public void onSuccess(final Method method, final List<TodoItem> response) {
-                    todoList.removeAllChildren();
-                    for (final TodoItem todoItem : response) {
-                        final LIElement todoListItem = Document.get().createLIElement();
-                        todoListItem.setInnerHTML(todoItem.getText());
-                        todoList.appendChild(todoListItem);
-                    }
-                }
-            });
+            refreshTodoItems();
         });
 
         addTodoItemButton.addClickHandler(event -> {
             final String todoItemText = todoItemTextBox.getText();
             if (!todoItemText.isEmpty()) {
-                final TodoItem todoItem = new TodoItem();
-                todoItem.setText(todoItemText);
-                todoItemService.addTodo(todoItem, new MethodCallback<Void>() {
-                    @Override
-                    public void onFailure(final Method method, final Throwable exception) {
+                addTodoItem(todoItemText);
+            }
+        });
 
-                    }
+        todoItemTextBox.addKeyUpHandler(event -> {
+            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                final String todoItemText = todoItemTextBox.getText();
+                if (!todoItemText.isEmpty()) {
+                    addTodoItem(todoItemText);
+                }
+            }
+        });
+    }
 
-                    @Override
-                    public void onSuccess(final Method method, final Void response) {
-                        todoItemTextBox.setText("");
-                    }
-                });
+    private void refreshTodoItems() {
+        todoItemService.getTodos("", new MethodCallback<List<TodoItem>>() {
+            @Override
+            public void onFailure(final Method method, final Throwable exception) {
+
+            }
+
+            @Override
+            public void onSuccess(final Method method, final List<TodoItem> response) {
+                todoItemsList.removeAllChildren();
+                for (final TodoItem todoItem : response) {
+                    final LIElement todoListItem = Document.get().createLIElement();
+                    todoListItem.setInnerHTML(todoItem.getText());
+                    todoItemsList.appendChild(todoListItem);
+                }
+            }
+        });
+    }
+
+    private void addTodoItem(final String text) {
+        final TodoItem todoItem = new TodoItem();
+        todoItem.setText(text);
+        todoItemService.addTodo(todoItem, new MethodCallback<Void>() {
+            @Override
+            public void onFailure(final Method method, final Throwable exception) {
+
+            }
+
+            @Override
+            public void onSuccess(final Method method, final Void response) {
+                todoItemTextBox.setText("");
+                refreshTodoItems();
             }
         });
     }

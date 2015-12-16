@@ -6,7 +6,7 @@
         <g:Button ui:field="showTodoItemsButton">Show</g:Button>
 
         <p>
-            <ul ui:field="todoList">
+            <ul ui:field="todoItemsList">
             </ul>
         </p>
 
