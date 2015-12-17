@@ -7,7 +7,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
 This is a demo project to demonstrate Spring Boot in conjunction with GWT. It uses the latest
-dependencies (Spring Boot 1.3 and GWT 2.8 beta) and Java 8.
+dependencies (Spring Boot 1.3 and GWT 2.8 beta) and Java 8. The deployed app can be found [here](https://spring-boot-gwt.herokuapp.com/).
 
 ## Run
 
