@@ -1,16 +1,30 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+        }
+
+        .wrapper {
+            width: 960px;
+            margin: 0 auto;
+        }
+    </ui:style>
+
     <g:HTMLPanel>
-        <h1>Todos</h1>
+        <div class="{style.wrapper}">
+            <h1>Todos</h1>
 
-        <g:Button ui:field="showTodoItemsButton">Show</g:Button>
+            <g:Button ui:field="showTodoItemsButton">Show</g:Button>
 
-        <p>
-            <ul ui:field="todoItemsList">
-            </ul>
-        </p>
+            <p>
+                <ul ui:field="todoItemsList">
+                </ul>
+            </p>
 
-        <g:TextBox ui:field="todoItemTextBox"/>
-        <g:Button ui:field="addTodoItemButton">Add</g:Button>
+            <g:TextBox ui:field="todoItemTextBox"/>
+            <g:Button ui:field="addTodoItemButton">Add</g:Button>
+        </div>
     </g:HTMLPanel>
 </ui:UiBinder>
