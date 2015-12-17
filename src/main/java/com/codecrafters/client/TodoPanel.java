@@ -27,9 +27,6 @@ public class TodoPanel extends Composite {
     private static final TodoItemService todoItemService = GWT.create(TodoItemService.class);
 
     @UiField
-    Button showTodoItemsButton;
-
-    @UiField
     UListElement todoItemsList;
 
     @UiField
@@ -41,10 +38,7 @@ public class TodoPanel extends Composite {
     public TodoPanel() {
         HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
         initWidget(rootElement);
-
-        showTodoItemsButton.addClickHandler(event -> {
-            refreshTodoItems();
-        });
+        refreshTodoItems();
 
         addTodoItemButton.addClickHandler(event -> {
             final String todoItemText = todoItemTextBox.getText();

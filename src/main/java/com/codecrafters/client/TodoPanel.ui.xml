@@ -16,8 +16,6 @@
         <div class="{style.wrapper}">
             <h1>Todos</h1>
 
-            <g:Button ui:field="showTodoItemsButton">Show</g:Button>
-
             <p>
                 <ul ui:field="todoItemsList">
                 </ul>
