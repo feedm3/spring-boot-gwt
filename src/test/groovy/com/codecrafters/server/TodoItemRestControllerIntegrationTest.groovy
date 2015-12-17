@@ -8,9 +8,7 @@ import org.springframework.boot.test.WebIntegrationTest
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ContextConfiguration
-import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import spock.lang.Shared
 import spock.lang.Specification
@@ -23,8 +21,6 @@ import spock.lang.Stepwise
 @Stepwise
 class TodoItemRestControllerIntegrationTest extends Specification {
 
-    // TODO make tests better
-
     @Shared
     RestTemplate restTemplate = new TestRestTemplate()
 
@@ -32,46 +28,48 @@ class TodoItemRestControllerIntegrationTest extends Specification {
     ObjectMapper mapper;
 
     @Shared
-    def todoItem
+    String todosUrl = "http://localhost:8080/todos"
 
     def "PUT /todos"() {
         when: "we post a new item"
-        restTemplate.put("http://localhost:8080/todos", new TodoItem("Sample text 12354321423"), TodoItem.class)
+        def request = new HttpEntity<>(new TodoItem("Sample text 12354321423"))
+        def response = restTemplate.exchange(todosUrl, HttpMethod.PUT, request, String.class)
 
         then: "we get the corresponding http status"
-        notThrown(RestClientException)
+        response.getStatusCode() == HttpStatus.OK
     }
 
     def "GET /todos"() {
         when: "we get the items"
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/todos", String.class)
+        def response = restTemplate.getForEntity(todosUrl, String.class)
 
-        then: "we get the corresponding http status"
+        then: "we get the http status OK"
         response.getStatusCode() == HttpStatus.OK
+    }
 
-        when: "we get search for an item by the text"
-        ResponseEntity<String> responseExact = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
-        List<TodoItem> items = mapper.readValue(responseExact.getBody(), new TypeReference<List<TodoItem>>(){});
+    def "GET /todos?text=123543"() {
+        when: "we search for an item by the text"
+        def responseExact = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
+        List<TodoItem> items = mapper.readValue(responseExact.getBody(), new TypeReference<List<TodoItem>>() {});
 
-        then: "we find it"
+        then: "we get the item"
         items.size() == 1
         items.get(0).getText() == "Sample text 12354321423"
     }
 
     def "DELETE /todos"() {
-        when:
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
-        List<TodoItem> items = mapper.readValue(response.getBody(), new TypeReference<List<TodoItem>>(){});
+        given: "the item we saved in the requests before"
+        def responseBeforeDelete = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
+        List<TodoItem> itemsBeforeDelete = mapper.readValue(responseBeforeDelete.getBody(), new TypeReference<List<TodoItem>>() {});
 
-        restTemplate.delete("http://localhost:8080/todos", items.get(0))
-        HttpEntity<TodoItem> request = new HttpEntity<>(items.get(0))
+        when: "we delete the item and request them afterwards again"
+        HttpEntity<TodoItem> request = new HttpEntity<>(itemsBeforeDelete.get(0))
+        restTemplate.exchange(todosUrl, HttpMethod.DELETE, request, String.class)
 
-        restTemplate.exchange("http://localhost:8080/todos", HttpMethod.DELETE, request, String.class)
+        def responseAfterDelete = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
+        List<TodoItem> itemsAfterDelete = mapper.readValue(responseAfterDelete.getBody(), new TypeReference<List<TodoItem>>() {});
 
-        response = restTemplate.getForEntity("http://localhost:8080/todos?text=123543", String.class)
-        items = mapper.readValue(response.getBody(), new TypeReference<List<TodoItem>>(){});
-
-        then:
-        items.size() == 0
+        then: "the item does not exist"
+        itemsAfterDelete.size() == 0
     }
 }
