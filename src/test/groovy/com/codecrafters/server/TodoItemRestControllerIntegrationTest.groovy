@@ -13,7 +13,10 @@ import org.springframework.web.client.RestTemplate
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
+
 /**
+ * This class is used as integration test for the /todos url (TodoItemRestController).
+ *
  * @author Fabian Dietenberger
  */
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
