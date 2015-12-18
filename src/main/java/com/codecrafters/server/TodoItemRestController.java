@@ -1,11 +1,11 @@
 package com.codecrafters.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +27,7 @@ public class TodoItemRestController {
     public ResponseEntity<List<TodoItem>> getTodoItems(@RequestParam(value = "text", required = false) String containingText) {
         final List<TodoItem> items = repository.findByTextContainingIgnoreCase(Optional.ofNullable(containingText).orElse(""));
         return ResponseEntity.ok()
-                .lastModified(Instant.now().toEpochMilli()) // if we dont return this timestamp the browser could cache the request
+                .cacheControl(CacheControl.noCache()) // if we dont return this timestamp the browser could cache the request
                 .body(items);
     }
 
