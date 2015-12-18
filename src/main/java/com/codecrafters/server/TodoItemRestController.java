@@ -27,7 +27,7 @@ public class TodoItemRestController {
     public ResponseEntity<List<TodoItem>> getTodoItems(@RequestParam(value = "text", required = false) String containingText) {
         final List<TodoItem> items = repository.findByTextContainingIgnoreCase(Optional.ofNullable(containingText).orElse(""));
         return ResponseEntity.ok()
-                .cacheControl(CacheControl.noCache()) // if we dont return this timestamp the browser could cache the request
+                .cacheControl(CacheControl.noCache()) // if we dont return this the browser could (edge does) cache the request
                 .body(items);
     }
 
