@@ -47,6 +47,7 @@ public class TodoPanel extends Composite {
             }
         });
 
+        todoItemTextBox.getElement().setAttribute("placeholder", "Add a todo item");
         todoItemTextBox.addKeyUpHandler(event -> {
             if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
                 final String todoItemText = todoItemTextBox.getText();

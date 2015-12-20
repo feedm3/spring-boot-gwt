@@ -1,28 +1,67 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:style>
-        body {
+        body, html {
             font-family: 'Roboto', sans-serif;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background-color: #E9EAED;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
             width: 100%;
         }
 
-        .wrapper {
-            width: 960px;
-            margin: 0 auto;
+        .todo-panel {
+            background-color: #FFFFFF;
+            width: 480px;
+            padding: 10px;
+            box-shadow: 0 0 10px 1px #C9C9C9;
+            border-radius: 4px;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+        }
+
+        .input-group-text {
+            width: 100%;
+            border: 1px solid #BBB;
+        }
+
+        .input-group-button {
+            width: 150px;
+            border: 1px solid #BBB;
         }
     </ui:style>
 
-    <g:HTMLPanel>
-        <div class="{style.wrapper}">
-            <h1>Todos</h1>
+    <g:HTMLPanel addStyleNames="{style.center}">
+        <div class="{style.todo-panel}">
+            <h1 class="{style.header}">Todos</h1>
 
-            <p>
-                <ul ui:field="todoItemsList">
-                </ul>
-            </p>
+            <ul ui:field="todoItemsList">
+            </ul>
 
-            <g:TextBox ui:field="todoItemTextBox"/>
-            <g:Button ui:field="addTodoItemButton">Add</g:Button>
+            <div class="{style.input-group}">
+                <g:TextBox ui:field="todoItemTextBox" addStyleNames="{style.input-group-text}"/>
+                <g:Button ui:field="addTodoItemButton" addStyleNames="{style.input-group-button}">Add</g:Button>
+            </div>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>
