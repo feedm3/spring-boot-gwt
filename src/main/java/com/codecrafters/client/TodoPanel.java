@@ -1,16 +1,10 @@
 package com.codecrafters.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.LIElement;
-import com.google.gwt.dom.client.UListElement;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.*;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
@@ -27,7 +21,7 @@ public class TodoPanel extends Composite {
     private static final TodoItemService todoItemService = GWT.create(TodoItemService.class);
 
     @UiField
-    UListElement todoItemsList;
+    FlowPanel todoItemsList;
 
     @UiField
     TextBox todoItemTextBox;
@@ -36,8 +30,7 @@ public class TodoPanel extends Composite {
     Button addTodoItemButton;
 
     public TodoPanel() {
-        HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
-        initWidget(rootElement);
+        initWidget(ourUiBinder.createAndBindUi(this));
         refreshTodoItems();
 
         addTodoItemButton.addClickHandler(event -> {
@@ -67,11 +60,11 @@ public class TodoPanel extends Composite {
 
             @Override
             public void onSuccess(final Method method, final List<TodoItem> response) {
-                todoItemsList.removeAllChildren();
+                todoItemsList.clear();
                 for (final TodoItem todoItem : response) {
-                    final LIElement todoListItem = Document.get().createLIElement();
-                    todoListItem.setInnerHTML(todoItem.getText());
-                    todoItemsList.appendChild(todoListItem);
+                    final TodoItemLabel todoItemLabel = new TodoItemLabel(todoItem);
+                    todoItemLabel.addClickHandler(todoItem1 -> removeTodoItem(todoItem1));
+                    todoItemsList.add(todoItemLabel);
                 }
             }
         });
@@ -89,6 +82,20 @@ public class TodoPanel extends Composite {
             @Override
             public void onSuccess(final Method method, final Void response) {
                 todoItemTextBox.setText("");
+                refreshTodoItems();
+            }
+        });
+    }
+
+    public void removeTodoItem(final TodoItem todoItem) {
+        todoItemService.deleteTodo(todoItem, new MethodCallback<Void>() {
+            @Override
+            public void onFailure(final Method method, final Throwable exception) {
+
+            }
+
+            @Override
+            public void onSuccess(final Method method, final Void response) {
                 refreshTodoItems();
             }
         });

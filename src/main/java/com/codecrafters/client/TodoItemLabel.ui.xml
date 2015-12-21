@@ -1,0 +1,15 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .todo-item-label {
+            width: 100%;
+        }
+
+        .todo-item-label:hover {
+            text-decoration: line-through;
+            color: #999999;
+            cursor: pointer;
+        }
+    </ui:style>
+    <g:Label ui:field="label" addStyleNames="{style.todo-item-label}"/>
+</ui:UiBinder>

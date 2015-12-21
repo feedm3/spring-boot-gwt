@@ -55,8 +55,8 @@
         <div class="{style.todo-panel}">
             <h1 class="{style.header}">Todos</h1>
 
-            <ul ui:field="todoItemsList">
-            </ul>
+            <g:FlowPanel ui:field="todoItemsList">
+            </g:FlowPanel>
 
             <div class="{style.input-group}">
                 <g:TextBox ui:field="todoItemTextBox" addStyleNames="{style.input-group-text}"/>
