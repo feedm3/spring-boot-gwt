@@ -20,6 +20,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             height: 100%;
             width: 100%;
         }
@@ -71,6 +72,15 @@
             background-color: #014682;
             border-color: #01315a;
         }
+
+        .footer {
+            color: gray;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+            font-size: 12px;
+        }
     </ui:style>
 
     <g:HTMLPanel addStyleNames="{style.center}">
@@ -85,5 +95,8 @@
                 <g:Button ui:field="addTodoItemButton" addStyleNames="{style.input-group-button}">Add</g:Button>
             </div>
         </div>
+        <a class="{style.footer}" href="https://github.com/feedm3/spring-boot-gwt" target="_blank">Data refresh ever 15
+            minutes. © 2015 Fabian Dietenberger
+        </a>
     </g:HTMLPanel>
 </ui:UiBinder>
