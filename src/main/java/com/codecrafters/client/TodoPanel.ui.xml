@@ -50,6 +50,7 @@
             border: 1px solid #CCC;
             padding: .375rem .75rem;
             border-radius: .25rem 0 0 .25rem;
+            border-right: 0;
         }
 
         .input-group-button {
