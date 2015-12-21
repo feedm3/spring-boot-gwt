@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * This class is used as rest controller for the {@link TodoItem}.
+ *
  * @author Fabian Dietenberger
  */
 @RestController()

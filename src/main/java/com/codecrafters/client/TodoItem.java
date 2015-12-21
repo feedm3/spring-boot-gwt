@@ -1,6 +1,8 @@
 package com.codecrafters.client;
 
 /**
+ * This class is used to represent a todoItem.
+ *
  * @author Fabian Dietenberger
  */
 public class TodoItem {

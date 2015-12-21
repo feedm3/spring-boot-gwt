@@ -11,6 +11,8 @@ import org.fusesource.restygwt.client.MethodCallback;
 import java.util.List;
 
 /**
+ * This class is used as root panel and contains the whole page.
+ *
  * @author Fabian Dietenberger
  */
 public class TodoPanel extends Composite {
@@ -51,6 +53,9 @@ public class TodoPanel extends Composite {
         });
     }
 
+    /**
+     * Clear the todoItemsPanel and add all todoItems from the server.
+     */
     private void refreshTodoItems() {
         todoItemService.getTodos("", new MethodCallback<List<TodoItem>>() {
             @Override
@@ -70,6 +75,11 @@ public class TodoPanel extends Composite {
         });
     }
 
+    /**
+     * Send a new todoItem to the server. On success refresh the todoItemsPanel.
+     *
+     * @param text the text of the todoItem
+     */
     private void addTodoItem(final String text) {
         final TodoItem todoItem = new TodoItem();
         todoItem.setText(text);
@@ -87,6 +97,11 @@ public class TodoPanel extends Composite {
         });
     }
 
+    /**
+     * Remove a todoItem from the server. On success refresh the todoItemsPanel.
+     *
+     * @param todoItem the todoItem to delete
+     */
     public void removeTodoItem(final TodoItem todoItem) {
         todoItemService.deleteTodo(todoItem, new MethodCallback<Void>() {
             @Override

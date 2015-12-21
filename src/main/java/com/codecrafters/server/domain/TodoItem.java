@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
+ * This class is used as entity for a todoItem.
+ *
  * @author Fabian Dietenberger
  */
 @Entity

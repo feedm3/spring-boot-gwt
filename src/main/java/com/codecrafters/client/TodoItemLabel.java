@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is used to represent a {@link TodoItem} in a panel.
+ *
  * @author Fabian Dietenberger
  */
 public class TodoItemLabel extends Composite {

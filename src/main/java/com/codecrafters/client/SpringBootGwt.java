@@ -6,6 +6,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.fusesource.restygwt.client.Defaults;
 
 /**
+ * This class is used as entry point for our GWT application. It configures the app and adds the UI.
+ *
  * @author Fabian Dietenberger
  */
 public class SpringBootGwt implements EntryPoint {
@@ -29,6 +31,11 @@ public class SpringBootGwt implements EntryPoint {
         }
     }
 
+    /**
+     * Detect if the app is in development mode.
+     *
+     * @return true if in development mode
+     */
     private static native boolean isDevelopmentMode()/*-{
         return typeof $wnd.__gwt_sdm !== 'undefined';
     }-*/;

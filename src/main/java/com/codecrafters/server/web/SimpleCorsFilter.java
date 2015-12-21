@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * This class is used to enable CORS requests.
+ * This class is used to enable CORS requests. This is necessary for RestyGwt because the browser would otherwise not
+ * allow the requests.
+ *
+ * The filter get called before every request.
  *
  * @author Fabian Dietenberger
  */
