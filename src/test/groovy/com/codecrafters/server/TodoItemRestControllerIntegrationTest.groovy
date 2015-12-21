@@ -17,6 +17,8 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
 
+import javax.ws.rs.core.HttpHeaders
+
 /**
  * This class is used as integration test for the /todos url (TodoItemRestController).
  *
@@ -52,6 +54,9 @@ class TodoItemRestControllerIntegrationTest extends Specification {
 
         then: "we get the http status OK"
         response.getStatusCode() == HttpStatus.OK
+
+        and: "the response should not be cached"
+        response.getHeaders().get(HttpHeaders.CACHE_CONTROL).get(0) == "no-cache"
     }
 
     def "GET /todos?text=123543"() {
