@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Fabian Dietenberger
  */
-public class TodoPanel extends Composite {
+class TodoPanel extends Composite {
 
     interface TestViewUiBinder extends UiBinder<HTMLPanel, TodoPanel> {}
     private static TestViewUiBinder ourUiBinder = GWT.create(TestViewUiBinder.class);
@@ -68,7 +68,7 @@ public class TodoPanel extends Composite {
                 todoItemsList.clear();
                 for (final TodoItem todoItem : response) {
                     final TodoItemLabel todoItemLabel = new TodoItemLabel(todoItem);
-                    todoItemLabel.addClickHandler(todoItem1 -> removeTodoItem(todoItem1));
+                    todoItemLabel.addClickHandler(todoItemToRemove -> removeTodoItem(todoItemToRemove));
                     todoItemsList.add(todoItemLabel);
                 }
             }
@@ -81,9 +81,7 @@ public class TodoPanel extends Composite {
      * @param text the text of the todoItem
      */
     private void addTodoItem(final String text) {
-        final TodoItem todoItem = new TodoItem();
-        todoItem.setText(text);
-        todoItemService.addTodo(todoItem, new MethodCallback<Void>() {
+        todoItemService.addTodo(new TodoItem(text), new MethodCallback<Void>() {
             @Override
             public void onFailure(final Method method, final Throwable exception) {
 

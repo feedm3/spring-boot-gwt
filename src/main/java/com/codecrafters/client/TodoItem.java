@@ -5,7 +5,7 @@ package com.codecrafters.client;
  *
  * @author Fabian Dietenberger
  */
-public class TodoItem {
+class TodoItem {
 
     private long id;
     private String text;

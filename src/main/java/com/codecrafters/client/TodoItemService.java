@@ -12,7 +12,7 @@ import java.util.List;
  * @author Fabian Dietenberger
  */
 @Path("todos")
-public interface TodoItemService extends RestService {
+interface TodoItemService extends RestService {
 
     /**
      * Get all todoItems from the server.

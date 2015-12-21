@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Fabian Dietenberger
  */
-public class TodoItemLabel extends Composite {
+class TodoItemLabel extends Composite {
 
     interface TodoItemLabelUiBinder extends UiBinder<Label, TodoItemLabel> {}
     private static TodoItemLabelUiBinder ourUiBinder = GWT.create(TodoItemLabelUiBinder.class);
