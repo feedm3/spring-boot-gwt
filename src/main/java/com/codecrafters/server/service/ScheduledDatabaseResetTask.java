@@ -6,6 +6,7 @@ import com.codecrafters.server.web.TodoItemRestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,9 @@ public class ScheduledDatabaseResetTask {
             "Learn GWT",
             "Learn Java 8");
 
+    @Value("${schedulingEnabled}")
+    private boolean schedulingEnabled;
+
     private final Logger logger = LoggerFactory.getLogger(TodoItemRestController.class);
     private final TodoItemRepository repository;
 
@@ -36,12 +40,14 @@ public class ScheduledDatabaseResetTask {
 
     @Scheduled(fixedRateString = FIFTEEN_MINUTES_IN_MILLIS)
     public void resetDatabase() {
-        logger.info("Reset database");
-        repository.deleteAll();
+        if (schedulingEnabled) {
+            logger.info("Reset database");
+            repository.deleteAll();
 
-        INITIAL_TODO_ITEMS.forEach(text -> repository.save(new TodoItem(text)));
+            INITIAL_TODO_ITEMS.forEach(text -> repository.save(new TodoItem(text)));
 
-        final List<TodoItem> itemsInDatabase = repository.findAll();
-        logger.info("Saved " + itemsInDatabase.size() + " todo items to the database: " + itemsInDatabase.toString());
+            final List<TodoItem> itemsInDatabase = repository.findAll();
+            logger.info("Saved " + itemsInDatabase.size() + " todo items to the database: " + itemsInDatabase.toString());
+        }
     }
 }

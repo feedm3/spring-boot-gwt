@@ -5,6 +5,7 @@ import com.codecrafters.server.domain.TodoItemRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
@@ -15,6 +16,7 @@ import spock.lang.Specification
  */
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
 @IntegrationTest
+@ActiveProfiles("test")
 class TodoItemRepositoryIntegrationTest extends Specification {
 
     @Autowired

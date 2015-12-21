@@ -10,6 +10,7 @@ import org.springframework.boot.test.WebIntegrationTest
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.web.client.RestTemplate
 import spock.lang.Shared
@@ -24,6 +25,7 @@ import spock.lang.Stepwise
 @ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
 @WebIntegrationTest
 @Stepwise
+@ActiveProfiles("test")
 class TodoItemRestControllerIntegrationTest extends Specification {
 
     @Shared
