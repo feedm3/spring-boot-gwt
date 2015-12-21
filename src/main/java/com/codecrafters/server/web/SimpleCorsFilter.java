@@ -1,4 +1,4 @@
-package com.codecrafters.server;
+package com.codecrafters.server.web;
 
 import org.springframework.stereotype.Component;
 

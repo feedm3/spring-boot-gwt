@@ -1,5 +1,7 @@
 package com.codecrafters.server;
 
+import com.codecrafters.server.domain.TodoItem;
+import com.codecrafters.server.domain.TodoItemRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

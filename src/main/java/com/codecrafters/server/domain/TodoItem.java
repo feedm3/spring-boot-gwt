@@ -1,4 +1,4 @@
-package com.codecrafters.server;
+package com.codecrafters.server.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

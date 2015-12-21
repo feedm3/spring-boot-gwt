@@ -1,5 +1,7 @@
-package com.codecrafters.server;
+package com.codecrafters.server.web;
 
+import com.codecrafters.server.domain.TodoItem;
+import com.codecrafters.server.domain.TodoItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;

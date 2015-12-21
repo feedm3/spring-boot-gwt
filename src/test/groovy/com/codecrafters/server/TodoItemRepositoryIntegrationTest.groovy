@@ -1,4 +1,7 @@
 package com.codecrafters.server
+
+import com.codecrafters.server.domain.TodoItem
+import com.codecrafters.server.domain.TodoItemRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
