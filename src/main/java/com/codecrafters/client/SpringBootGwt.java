@@ -19,7 +19,7 @@ public class SpringBootGwt implements EntryPoint {
 
     private void useCorrectRequestBaseUrl() {
         if (isDevelopmentMode()) {
-            // our spring boot server is running at port 80. If we dont change the url
+            // our spring boot server is running at port 80. If we don't change the url
             // resty gwt would use the gwt servlet port
             Defaults.setServiceRoot("http://localhost:8080");
         } else {

@@ -95,7 +95,7 @@
                 <g:Button ui:field="addTodoItemButton" addStyleNames="{style.input-group-button}">Add</g:Button>
             </div>
         </div>
-        <a class="{style.footer}" href="https://github.com/feedm3/spring-boot-gwt" target="_blank">Data refresh ever 15
+        <a class="{style.footer}" href="https://github.com/feedm3/spring-boot-gwt" target="_blank">Data refresh every 15
             minutes. © 2015 Fabian Dietenberger
         </a>
     </g:HTMLPanel>

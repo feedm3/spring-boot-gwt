@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This class is used as scheduled task which resets the database every 15 minutes to it's inital state.
+ * This class is used as scheduled task which resets the database every 15 minutes to it's initial state.
  *
  * @author Fabian Dietenberger
  */
