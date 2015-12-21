@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootApplication
 public class SpringBootGwtApplication {
 
-    private Logger logger = LoggerFactory.getLogger(SpringBootGwtApplication.class);
+    private final Logger logger = LoggerFactory.getLogger(SpringBootGwtApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootGwtApplication.class, args);
@@ -35,7 +35,7 @@ public class SpringBootGwtApplication {
             itemTexts.forEach(text -> repository.save(new TodoItem(text)));
 
             final List<TodoItem> items = repository.findAll();
-            logger.info("Saved " + items.size() + " todo items to the database -> " + items.toString());
+            logger.info("Saved " + items.size() + " todo items to the database: " + items.toString());
         };
     }
 }

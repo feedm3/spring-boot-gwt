@@ -2,6 +2,8 @@ package com.codecrafters.server.web;
 
 import com.codecrafters.server.domain.TodoItem;
 import com.codecrafters.server.domain.TodoItemRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class TodoItemRestController {
 
     private final TodoItemRepository repository;
+    private final Logger logger = LoggerFactory.getLogger(TodoItemRestController.class);
 
     @Autowired
     public TodoItemRestController(final TodoItemRepository repository) {
@@ -36,12 +39,14 @@ public class TodoItemRestController {
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<String> addTodoItem(@RequestBody final TodoItem item) {
         repository.save(item);
+        logger.info("Item saved: " + item.toString());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity<String> removeTodoItem(@RequestBody final TodoItem item) {
         repository.delete(item);
+        logger.info("Item deleted: " + item.toString());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
