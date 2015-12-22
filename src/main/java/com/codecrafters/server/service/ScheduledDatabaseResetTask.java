@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * This class is used as scheduled task which resets the database every 15 minutes to it's initial state.
@@ -27,11 +26,11 @@ public class ScheduledDatabaseResetTask {
             "Learn GWT",
             "Learn Java 8");
 
-    @Value("${schedulingEnabled}")
-    private boolean schedulingEnabled;
-
     private final Logger logger = LoggerFactory.getLogger(TodoItemRestController.class);
     private final TodoItemRepository repository;
+
+    @Value("${schedulingEnabled}")
+    boolean schedulingEnabled;
 
     @Autowired
     public ScheduledDatabaseResetTask(final TodoItemRepository repository) {
@@ -42,11 +41,14 @@ public class ScheduledDatabaseResetTask {
     public void resetDatabase() {
         if (schedulingEnabled) {
             logger.info("Reset database");
+
             repository.deleteAll();
 
-            INITIAL_TODO_ITEMS.forEach(text -> repository.save(new TodoItem(text)));
+            for (final String initialTodoItem : INITIAL_TODO_ITEMS) {
+                repository.save(new TodoItem(initialTodoItem));
+            }
 
-            final List<TodoItem> itemsInDatabase = repository.findAll();
+            final List<TodoItem> itemsInDatabase = Optional.ofNullable(repository.findAll()).orElse(Collections.emptyList());
             logger.info("Saved " + itemsInDatabase.size() + " todo items to the database: " + itemsInDatabase.toString());
         }
     }
