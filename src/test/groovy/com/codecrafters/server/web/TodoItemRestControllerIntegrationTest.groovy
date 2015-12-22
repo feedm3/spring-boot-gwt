@@ -1,5 +1,6 @@
-package com.codecrafters.server
+package com.codecrafters.server.web
 
+import com.codecrafters.server.SpringBootGwtApplication
 import com.codecrafters.server.domain.TodoItem
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper

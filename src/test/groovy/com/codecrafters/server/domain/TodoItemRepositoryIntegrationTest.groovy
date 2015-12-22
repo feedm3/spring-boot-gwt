@@ -1,14 +1,11 @@
-package com.codecrafters.server
-
-import com.codecrafters.server.domain.TodoItem
-import com.codecrafters.server.domain.TodoItemRepository
+package com.codecrafters.server.domain
+import com.codecrafters.server.SpringBootGwtApplication
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
-
 /**
  * This class is used as integration test for the TodoItemRepository.
  *
