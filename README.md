@@ -3,6 +3,7 @@
 [![Heroku](http://heroku-badge.herokuapp.com/?app=spring-boot-gwt&style=flat)](https://spring-boot-gwt.herokuapp.com/)
 [![Build Status](https://travis-ci.org/feedm3/spring-boot-gwt.svg)](https://travis-ci.org/feedm3/spring-boot-gwt)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://badges.mit-license.org)
+[![Actively Maintained](https://maintained.tech/badge.svg)](https://maintained.tech/)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
