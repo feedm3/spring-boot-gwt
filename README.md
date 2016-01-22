@@ -44,7 +44,7 @@ After gradle build the project the finished jar file is in `build/libs/spring-bo
 and can simply be started with
 
 ```
-java -jar spring-boot-gwt-0.0.1-SNAPSHOT.jar
+java -jar spring-boot-gwt-1.0.0.jar
 ```
 
 The build tasks compiles all GWT related stuff and puts it into the [`static`](src/main/resources/static) folder.
