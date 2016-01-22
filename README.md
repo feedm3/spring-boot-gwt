@@ -8,7 +8,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
 This is a demo project to demonstrate Spring Boot in conjunction with GWT. It uses the latest
-dependencies (Spring Boot 1.3.2 and GWT 2.8 beta) and Java 8. The deployed app can be found [here](https://spring-boot-gwt.herokuapp.com/).
+dependencies (Spring Boot 1.3.2 and GWT 2.8 beta) and Java 8. The live deployed app can be found [here](https://spring-boot-gwt.herokuapp.com/).
 
 ## Run
 
@@ -83,4 +83,5 @@ If you add any dependencies for GWT add them to the provided dependencies.
 - If you start the server and client with IntelliJ the requests may not work and an `IllegalArgumentException`
 rises. The error can be solved by __starting the server with gradle__. It seems that IntelliJ does something
 wrong with spring boot. The exact error message is
+
 ```Caused by: java.lang.IllegalArgumentException: No converter found for return value of type: class java.util.LinkedHashMap```
