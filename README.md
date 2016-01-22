@@ -40,7 +40,7 @@ The project gets build to a single jar file with an embedded tomcat.
 gradlew build
 ```
 
-After gradle build the project the finished jar file is in `build/libs/spring-boot-gwt-0.0.1-SNAPSHOT.jar`
+After gradle build the project the finished jar file is in `build/libs/spring-boot-gwt-1.0.0.jar`
 and can simply be started with
 
 ```
