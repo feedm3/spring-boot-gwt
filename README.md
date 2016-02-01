@@ -13,7 +13,7 @@ dependencies (Spring Boot 1.3.2 and GWT 2.8 beta) and Java 8. The live deployed 
 ## Run
 
 To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ the run configurations
-to do this are already present in this repo.
+to do this are already present in this repo. _Note that you have to set the path to the static html file in your project strutures "Web" module to the [`static/resource`](src/main/resources/static) folder. Otherwise GWT will not find the index.html._
 
 Spring Boot can also be started with gradle.
 
@@ -23,7 +23,7 @@ gradlew bootRun
 
 ## Test
 
-Only the server side code is currently tested. To run the tests use the following command
+Currently only the server side code is tested. To run the tests use the following command
 
 ```
 gradlew test
