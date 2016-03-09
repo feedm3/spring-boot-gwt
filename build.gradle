@@ -57,7 +57,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.10'
+    gradleVersion = '2.11'
 }
 
 task compileGwt(dependsOn: classes, type: JavaExec) {
