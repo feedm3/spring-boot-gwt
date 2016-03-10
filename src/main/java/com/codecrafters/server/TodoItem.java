@@ -1,4 +1,4 @@
-package com.codecrafters.server.domain;
+package com.codecrafters.server;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * @author Fabian Dietenberger
  */
 @Entity
-public class TodoItem {
+class TodoItem {
 
     @Id
     @GeneratedValue

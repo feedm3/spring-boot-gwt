@@ -1,8 +1,5 @@
-package com.codecrafters.server.service;
+package com.codecrafters.server;
 
-import com.codecrafters.server.domain.TodoItem;
-import com.codecrafters.server.domain.TodoItemRepository;
-import com.codecrafters.server.web.TodoItemRestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * This class is used as scheduled task which resets the database every 15 minutes to it's initial state.
@@ -18,7 +18,7 @@ import java.util.*;
  * @author Fabian Dietenberger
  */
 @Component
-public class ScheduledDatabaseResetTask {
+class ScheduledDatabaseResetTask {
 
     private static final String FIFTEEN_MINUTES_IN_MILLIS = "1500000";
     private static final List<String> INITIAL_TODO_ITEMS = Arrays.asList(

@@ -1,5 +1,5 @@
-package com.codecrafters.server.domain
-import com.codecrafters.server.SpringBootGwtApplication
+package com.codecrafters.server
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.IntegrationTest
 import org.springframework.boot.test.SpringApplicationContextLoader

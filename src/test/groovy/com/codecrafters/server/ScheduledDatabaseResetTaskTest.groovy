@@ -1,6 +1,5 @@
-package com.codecrafters.server.service
+package com.codecrafters.server
 
-import com.codecrafters.server.domain.TodoItemRepository
 import spock.lang.Specification
 /**
  * This class is used as test for the ScheduledDatabaseResetTask.

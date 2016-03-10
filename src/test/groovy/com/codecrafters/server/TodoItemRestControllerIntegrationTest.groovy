@@ -1,7 +1,6 @@
-package com.codecrafters.server.web
+package com.codecrafters.server
 
 import com.codecrafters.server.SpringBootGwtApplication
-import com.codecrafters.server.domain.TodoItem
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
