@@ -7,8 +7,8 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
-This is a demo project to demonstrate Spring Boot in conjunction with GWT. It uses the latest
-dependencies (Spring Boot 1.3.3 and GWT 2.8 beta) and Java 8. The live deployed app can be found [here](https://spring-boot-gwt.herokuapp.com/).
+This is a demo project to show Spring Boot in conjunction with GWT. It uses the latest dependencies
+(Spring Boot 1.3.3 and GWT 2.8 beta) and Java 8. The deployed app can be found [here](https://spring-boot-gwt.herokuapp.com/).
 
 ## Run
 
@@ -34,7 +34,7 @@ readability, syntax and build in features.
 
 ## Build
 
-The project gets build to a single jar file with an embedded tomcat.
+The project con be build to a single jar file with an embedded tomcat:
 
 ```
 gradlew build
@@ -47,8 +47,6 @@ and can simply be started with
 java -jar spring-boot-gwt-1.0.0.jar
 ```
 
-The build tasks compiles all GWT related stuff and puts it into the [`static`](src/main/resources/static) folder.
-
 ### Heroku
 
 To deploy this app to heroku use the __Deploy to Heroku__ Button on the top.
@@ -58,8 +56,6 @@ need into the jar file we only have to tell heroku to execute this jar file.
 
 ## Technical Details
 
-### Architecture
-
 ![Architecture](docs/architecture.jpg)
 
 The client side and server side are strictly separated. The GWT files are in the `client` package
@@ -67,13 +63,5 @@ The client side and server side are strictly separated. The GWT files are in the
 like the `index.html` and css files are inside the [`static`](src/main/resources/static) folder. Gradle
 will also put the compiled sources in this folder.
 
-The communication is made via JSON for which reason we have make 2 implementations of the object we send.
-
-### Dependencies
-
-Spring Boot uses the classpath to determine which servlet container to use (tomcat comes with the Spring
-Boot dependencies). Since GWT also has Jetty within the classpath we have to put all GWT dependencies
-as provided. This is normally only possible with the `war` task so we had to make our own `provided` task.
-The instructions for this can be found on [Stackoverflow](http://stackoverflow.com/a/20841280/3141881).
-
-If you add any dependencies for GWT add them to the provided dependencies.
+The communication is made via JSON for which reason we have make 2 implementations of the object we
+send (POJO in the frontend and POJO with javax annotations in the backend).
