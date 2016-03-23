@@ -23,24 +23,16 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    provided
-}
-
 sourceSets {
     main.java.srcDir "src/main/java"
     main.resources.srcDir "src/main/resources"
     test.java.srcDir "src/test/java"
     test.groovy.srcDir "src/test/groovy"
     test.resources.srcDir "src/test/resources"
-
-    main.compileClasspath += configurations.provided
-    test.compileClasspath += configurations.provided
-    test.runtimeClasspath += configurations.provided
 }
 
 dependencies {
-    provided 'com.google.gwt:gwt-user:2.8.0-beta1',
+    compileOnly 'com.google.gwt:gwt-user:2.8.0-beta1',
             'com.google.gwt:gwt-dev:2.8.0-beta1',
             'org.fusesource.restygwt:restygwt:2.1.1'
 
@@ -57,7 +49,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.11'
+    gradleVersion = '2.12'
 }
 
 task compileGwt(dependsOn: classes, type: JavaExec) {
@@ -113,15 +105,8 @@ task stage {
 }
 stage.mustRunAfter(clean)
 
-idea {
-    module {
-        scopes.PROVIDED.plus += [configurations.provided]
-    }
-}
-
 eclipse {
     classpath {
-        plusConfigurations += configurations.provided
         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
     }

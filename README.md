@@ -77,11 +77,3 @@ as provided. This is normally only possible with the `war` task so we had to mak
 The instructions for this can be found on [Stackoverflow](http://stackoverflow.com/a/20841280/3141881).
 
 If you add any dependencies for GWT add them to the provided dependencies.
-
-## Known Issues
-
-- If you start the server and client with IntelliJ the requests may not work and an `IllegalArgumentException`
-rises. The error can be solved by __starting the server with gradle__. It seems that IntelliJ does something
-wrong with spring boot. The exact error message is
-
-```Caused by: java.lang.IllegalArgumentException: No converter found for return value of type: class java.util.LinkedHashMap```
