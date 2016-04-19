@@ -34,7 +34,8 @@ sourceSets {
 dependencies {
     compileOnly 'com.google.gwt:gwt-user:2.8.0-beta1',
             'com.google.gwt:gwt-dev:2.8.0-beta1',
-            'org.fusesource.restygwt:restygwt:2.1.1'
+            'org.fusesource.restygwt:restygwt:2.1.1',
+            'org.springframework.boot:spring-boot-configuration-processor'
 
     compile 'org.springframework.boot:spring-boot-starter-data-jpa',
             'org.springframework.boot:spring-boot-starter-web',
@@ -88,6 +89,8 @@ task compileGwt(dependsOn: classes, type: JavaExec) {
 
     maxHeapSize = '512M'
 }
+
+compileJava.dependsOn(processResources)
 
 jar.dependsOn compileGwt
 jar {

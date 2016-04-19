@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "spring-boot-gwt.scheduled-database-reset",
+      "type": "java.lang.Boolean",
+      "description": "Reset the database with in a given interval with given initial values."
+    },
+    {
+      "name": "spring-boot-gwt.scheduled-database-reset-interval-millis",
+      "type": "java.lang.Long",
+      "description": "The interval in milliseconds to reset the database."
+    },
+    {
+      "name": "spring-boot-gwt.initial-todo-items",
+      "type": "java.util.List<java.lang.String>",
+      "description": "The initial values to insert after the scheduled database reset."
+    }
+  ]
+}
