@@ -3,11 +3,9 @@ package com.codecrafters.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -20,31 +18,24 @@ import java.util.Optional;
 @Component
 class ScheduledDatabaseResetTask {
 
-    private static final String FIFTEEN_MINUTES_IN_MILLIS = "1500000";
-    private static final List<String> INITIAL_TODO_ITEMS = Arrays.asList(
-            "Learn Spring Boot",
-            "Learn GWT",
-            "Learn Java 8");
-
-    private final Logger logger = LoggerFactory.getLogger(TodoItemRestController.class);
+    private final Logger logger = LoggerFactory.getLogger(ScheduledDatabaseResetTask.class);
     private final TodoItemRepository repository;
-
-    @Value("${schedulingEnabled}")
-    boolean schedulingEnabled;
+    private final SpringBootGwtProperties springBootGwtProperties;
 
     @Autowired
-    public ScheduledDatabaseResetTask(final TodoItemRepository repository) {
+    public ScheduledDatabaseResetTask(final TodoItemRepository repository, final SpringBootGwtProperties springBootGwtProperties) {
         this.repository = repository;
+        this.springBootGwtProperties = springBootGwtProperties;
     }
 
-    @Scheduled(fixedRateString = FIFTEEN_MINUTES_IN_MILLIS)
+    @Scheduled(fixedRateString = "${spring-boot-gwt.scheduled-database-reset-interval-millis}")
     public void resetDatabase() {
-        if (schedulingEnabled) {
+        if (springBootGwtProperties.isScheduledDatabaseReset()) {
             logger.info("Reset database");
 
             repository.deleteAll();
 
-            for (final String initialTodoItem : INITIAL_TODO_ITEMS) {
+            for (final String initialTodoItem : springBootGwtProperties.getInitialTodoItems()) {
                 repository.save(new TodoItem(initialTodoItem));
             }
 

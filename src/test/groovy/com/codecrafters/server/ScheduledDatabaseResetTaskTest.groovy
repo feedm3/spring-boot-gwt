@@ -12,8 +12,11 @@ class ScheduledDatabaseResetTaskTest extends Specification {
     def "reset the database when scheduling is enabled"() {
         given:
         def repository = Mock(TodoItemRepository)
-        def databaseResetTask = new ScheduledDatabaseResetTask(repository)
-        databaseResetTask.schedulingEnabled = true;
+        def properties = new SpringBootGwtProperties()
+        properties.scheduledDatabaseReset = true
+        properties.initialTodoItems = ["Item 1", "Item 2", "Item 3"]
+
+        def databaseResetTask = new ScheduledDatabaseResetTask(repository, properties)
 
         when:
         databaseResetTask.resetDatabase()
@@ -27,8 +30,10 @@ class ScheduledDatabaseResetTaskTest extends Specification {
     def "do nothing when scheduling is not enabled"() {
         given:
         def repository = Mock(TodoItemRepository)
-        def databaseResetTask = new ScheduledDatabaseResetTask(repository)
-        databaseResetTask.schedulingEnabled = false
+        def properties = new SpringBootGwtProperties()
+        properties.scheduledDatabaseReset = false
+
+        def databaseResetTask = new ScheduledDatabaseResetTask(repository, properties)
 
         when:
         databaseResetTask.resetDatabase()
