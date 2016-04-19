@@ -21,7 +21,7 @@ public class SpringBootGwtApplication {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // enabling CORS to make RestyGWT work
+                // we have to enable CORS to make requests from other domains work
                 registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
             }
         };
