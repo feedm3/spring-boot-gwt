@@ -30,7 +30,7 @@ gradlew test
 ```
 
 We use [Spock](https://github.com/spockframework/spock) as testing framework because of the great
-readability, syntax and build in features.
+readability, syntax and built in features.
 
 ## Build
 
