@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.3.3.RELEASE'
+        springBootVersion = '1.3.5.RELEASE'
     }
     repositories {
         jcenter()
@@ -50,7 +50,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+    gradleVersion = '2.13'
 }
 
 task compileGwt(dependsOn: classes, type: JavaExec) {
