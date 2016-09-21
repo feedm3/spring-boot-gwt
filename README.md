@@ -33,6 +33,13 @@ gradlew test
 We use [Spock](https://github.com/spockframework/spock) as testing framework because of the great
 readability, syntax and built in features.
 
+#### Outdated dependencies
+
+To check for outdated dependencies
+```
+gradlew dependencyUpdates -Drevision=release
+```
+
 ## Build
 
 The project con be build to a single jar file with an embedded tomcat:
