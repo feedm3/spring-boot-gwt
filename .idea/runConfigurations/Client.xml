@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Client" type="GWT.ConfigurationType" factoryName="GWT Configuration" singleton="true">
-    <module name="spring-boot-gwt" />
-    <option name="RUN_PAGE" value="index.html" />
-    <option name="OPEN_IN_BROWSER" value="false" />
-    <option name="USE_SUPER_DEV_MODE" value="true" />
-    <method />
-  </configuration>
-</component>
