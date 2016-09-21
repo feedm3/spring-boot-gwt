@@ -1,6 +1,10 @@
 {
   "name": "Spring Boot with GWT demo app",
-  "description": "A barebones Spring Boot app using GWT as frontend",
+  "description": "A barebone Spring Boot app using GWT as frontend",
   "repository": "https://github.com/feedm3/spring-boot-gwt",
-  "keywords": ["spring boot", "spring", "gwt"]
+  "keywords": [
+    "spring boot",
+    "spring",
+    "gwt"
+  ]
 }
