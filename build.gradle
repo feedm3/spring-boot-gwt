@@ -35,8 +35,8 @@ sourceSets {
 }
 
 dependencies {
-    compileOnly 'com.google.gwt:gwt-user:2.8.0-rc2',
-            'com.google.gwt:gwt-dev:2.8.0-rc2',
+    compileOnly 'com.google.gwt:gwt-user:2.8.0-rc3',
+            'com.google.gwt:gwt-dev:2.8.0-rc3',
             'org.fusesource.restygwt:restygwt:2.2.0',
             'org.springframework.boot:spring-boot-configuration-processor'
 
