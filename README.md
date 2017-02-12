@@ -1,6 +1,5 @@
 # Spring Boot GWT
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=spring-boot-gwt&style=flat)](https://spring-boot-gwt.herokuapp.com/)
 [![Build Status](https://img.shields.io/travis/feedm3/spring-boot-gwt.svg?style=flat-square)](https://travis-ci.org/feedm3/spring-boot-gwt)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Dependency Status](https://dependencyci.com/github/feedm3/spring-boot-gwt/badge?style=flat-square)](https://dependencyci.com/github/feedm3/spring-boot-gwt)
