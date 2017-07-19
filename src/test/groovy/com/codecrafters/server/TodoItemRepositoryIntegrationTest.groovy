@@ -1,18 +1,17 @@
 package com.codecrafters.server
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.IntegrationTest
-import org.springframework.boot.test.SpringApplicationContextLoader
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
+
+
 /**
  * This class is used as integration test for the TodoItemRepository.
  *
  * @author Fabian Dietenberger
  */
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SpringBootGwtApplication.class)
-@IntegrationTest
+@SpringBootTest
 @ActiveProfiles("test")
 class TodoItemRepositoryIntegrationTest extends Specification {
 

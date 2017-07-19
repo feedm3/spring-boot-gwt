@@ -9,6 +9,7 @@ plugins {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+ext['spock.version'] = '1.1'
 
 repositories {
     jcenter()
@@ -44,14 +45,14 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.5.1'
+    gradleVersion = '4.0.1'
 }
 
 task compileGwt(dependsOn: classes, type: JavaExec) {
     ext.buildDir = "${project.buildDir}/gwt"
     ext.extraDir = "${project.buildDir}/extra"
 
-    inputs.source sourceSets.main.java.srcDirs
+    inputs.file sourceSets.main.java.srcDirs
     inputs.dir sourceSets.main.output.resourcesDir
     outputs.dir buildDir
 
