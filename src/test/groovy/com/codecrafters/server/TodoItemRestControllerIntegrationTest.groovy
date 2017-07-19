@@ -29,10 +29,10 @@ class TodoItemRestControllerIntegrationTest extends Specification {
     TestRestTemplate restTemplate = new TestRestTemplate()
 
     @Autowired
-    ObjectMapper mapper;
+    ObjectMapper mapper
 
     @LocalServerPort
-    private int port;
+    private int port
 
     def "PUT /todos"() {
         when: "we post a new item"
@@ -57,7 +57,7 @@ class TodoItemRestControllerIntegrationTest extends Specification {
     def "GET /todos?text=123543"() {
         when: "we search for an item by the text"
         def responseExact = restTemplate.getForEntity(getTodosUrl() + "?text=123543", String.class)
-        List<TodoItem> items = mapper.readValue(responseExact.getBody(), new TypeReference<List<TodoItem>>() {});
+        List<TodoItem> items = mapper.readValue(responseExact.getBody(), new TypeReference<List<TodoItem>>() {})
 
         then: "we get the item"
         items.size() == 1
@@ -67,14 +67,14 @@ class TodoItemRestControllerIntegrationTest extends Specification {
     def "DELETE /todos"() {
         given: "the item we saved in the requests before"
         def responseBeforeDelete = restTemplate.getForEntity(getTodosUrl() + "?text=123543", String.class)
-        List<TodoItem> itemsBeforeDelete = mapper.readValue(responseBeforeDelete.getBody(), new TypeReference<List<TodoItem>>() {});
+        List<TodoItem> itemsBeforeDelete = mapper.readValue(responseBeforeDelete.getBody(), new TypeReference<List<TodoItem>>() {})
 
         when: "we delete the item and request them afterwards again"
         HttpEntity<TodoItem> request = new HttpEntity<>(itemsBeforeDelete.get(0))
         restTemplate.exchange(getTodosUrl(), HttpMethod.DELETE, request, String.class)
 
         def responseAfterDelete = restTemplate.getForEntity(getTodosUrl() + "?text=123543", String.class)
-        List<TodoItem> itemsAfterDelete = mapper.readValue(responseAfterDelete.getBody(), new TypeReference<List<TodoItem>>() {});
+        List<TodoItem> itemsAfterDelete = mapper.readValue(responseAfterDelete.getBody(), new TypeReference<List<TodoItem>>() {})
 
         then: "the item does not exist"
         itemsAfterDelete.size() == 0
