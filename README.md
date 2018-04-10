@@ -42,7 +42,7 @@ gradlew dependencyUpdates -Drevision=release
 The project con be build to a single jar file with an embedded tomcat:
 
 ```
-gradlew build
+gradlew clean build
 ```
 
 After gradle build the project the finished jar file is in `build/libs/spring-boot-gwt-1.0.0.jar`

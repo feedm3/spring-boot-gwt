@@ -21,6 +21,7 @@ apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+def GWT_VERSION = '2.8.2'
 ext['spock.version'] = '1.1'
 
 repositories {
@@ -36,6 +37,10 @@ sourceSets {
 }
 
 dependencies {
+    // although the gwt plugin should already download the gwt dependencies, we have to add
+    // them manually as some jetty dependencies are missing otherwise
+    compileOnly("com.google.gwt:gwt-user:${GWT_VERSION}")
+    compileOnly("com.google.gwt:gwt-dev:${GWT_VERSION}")
     compileOnly('org.fusesource.restygwt:restygwt:2.2.3')
 
     compile('javax.ws.rs:javax.ws.rs-api:2.1')
@@ -60,7 +65,7 @@ task wrapper(type: Wrapper) {
 }
 
 gwt {
-    gwtVersion = '2.8.2'
+    gwtVersion = GWT_VERSION
     modules 'com.codecrafters.SpringBootGwt'
     maxHeapSize = "1024M"
 }
