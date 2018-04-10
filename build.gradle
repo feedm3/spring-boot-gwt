@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
+    }
+}
+
 plugins {
     id 'java'
     id 'eclipse'
@@ -7,6 +16,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.17.0'
 }
 
+apply plugin: 'gwt'
 apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8
@@ -26,8 +36,6 @@ sourceSets {
 }
 
 dependencies {
-    compileOnly('com.google.gwt:gwt-user:2.8.2')
-    compileOnly('com.google.gwt:gwt-dev:2.8.2')
     compileOnly('org.fusesource.restygwt:restygwt:2.2.3')
 
     compile('javax.ws.rs:javax.ws.rs-api:2.1')
@@ -51,52 +59,21 @@ task wrapper(type: Wrapper) {
     gradleVersion = '4.6'
 }
 
-task compileGwt(dependsOn: classes, type: JavaExec) {
-    ext.buildDir = "${project.buildDir}/gwt"
-    ext.extraDir = "${project.buildDir}/extra"
-
-    inputs.files sourceSets.main.java.srcDirs
-    inputs.dir sourceSets.main.output.resourcesDir
-    outputs.dir buildDir
-
-    doFirst {
-        file(buildDir).mkdirs()
-    }
-
-    main = 'com.google.gwt.dev.Compiler'
-
-    classpath {
-        [
-                sourceSets.main.java.srcDirs,           // Java source
-                sourceSets.main.output.resourcesDir,    // Generated resources
-                sourceSets.main.output.classesDir,      // Generated classes
-                sourceSets.main.compileClasspath,       // Deps
-        ]
-    }
-
-    args = [
-            'com.codecrafters.SpringBootGwt',
-            '-war', buildDir,
-            '-logLevel', 'INFO',
-            '-localWorkers', '4',
-            '-compileReport',
-            '-extra', extraDir,
-            '-style', 'OBF',
-            '-optimize', '7' // 0=none, 9=max
-    ]
-
-    maxHeapSize = '512M'
+gwt {
+    gwtVersion = '2.8.2'
+    modules 'com.codecrafters.SpringBootGwt'
+    maxHeapSize = "1024M"
 }
 
 compileJava.dependsOn(processResources)
 
-jar.dependsOn compileGwt
-jar {
+bootJar.dependsOn compileGwt
+bootJar {
     baseName = 'spring-boot-gwt'
     version = '1.0.0'
 
-    into('static') {
-        from compileGwt.buildDir
+    into('BOOT-INF/classes/static') {
+        from compileGwt.outputs
     }
 }
 
