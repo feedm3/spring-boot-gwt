@@ -10,8 +10,8 @@ This is a demo project to show Spring Boot in conjunction with GWT. It uses the 
 
 ## Run
 
-To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ the run configurations
-to do this are already present in this repo. _Note that you have to set the path to the static html file in your project strutures "Web" module to the [`static/resource`](src/main/resources/static) folder. Otherwise GWT will not find the index.html._
+To run this project you have to start Spring Boot and GWT separate. If you use IntelliJ, see the 
+[IDEA Settings readme](docs/IDEA_SETTINGS.md) for the correct configuration.
 
 Spring Boot can also be started with gradle.
 
@@ -49,7 +49,7 @@ After gradle build the project the finished jar file is in `build/libs/spring-bo
 and can simply be started with
 
 ```
-java -jar spring-boot-gwt-1.0.0.jar
+java -jar build/libs/spring-boot-gwt-1.0.0.jar
 ```
 
 ### Heroku
