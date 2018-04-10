@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This class is used as scheduled task which resets the database every 15 minutes to it's initial state.
@@ -37,7 +39,7 @@ class ScheduledDatabaseResetTask {
                 repository.save(new TodoItem(initialTodoItem));
             }
 
-            final List<TodoItem> itemsInDatabase = repository.findAll();
+            final List<TodoItem> itemsInDatabase = Optional.ofNullable(repository.findAll()).orElse(Collections.emptyList());
             logger.info("Saved " + itemsInDatabase.size() + " todo items to the database: " + itemsInDatabase.toString());
         }
     }

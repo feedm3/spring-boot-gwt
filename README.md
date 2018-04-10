@@ -3,7 +3,6 @@
 [![Build Status](https://img.shields.io/travis/feedm3/spring-boot-gwt.svg?style=flat-square)](https://travis-ci.org/feedm3/spring-boot-gwt)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Dependency Status](https://dependencyci.com/github/feedm3/spring-boot-gwt/badge?style=flat-square)](https://dependencyci.com/github/feedm3/spring-boot-gwt)
-[![Actively Maintained](https://img.shields.io/badge/Actively%20Maintained-%E2%9C%94-brightgreen.svg?style=flat-square)](https://img.shields.io/badge/Actively%20Maintained-%E2%9C%94-brightgreen.svg?style=flat-square)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feedm3/spring-boot-gwt/blob/master)
 
